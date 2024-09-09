@@ -4,10 +4,10 @@ type Repo = {
   title: string
   stargazer_count:number
 }
-export const getStaticProps = (async (context) => {
+export const getStaticProps = (async () => {
   
   const myHeaders = new Headers();
-  const raw=""
+  
   myHeaders.append("Authorization", `Bearer  ${process.env.TMOVEDB_API}`);
   const requestOptions = {
     method: "GET",
@@ -30,10 +30,11 @@ export default function Home({
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">  
         {
-          repo.results.map((item) => (
+          repo.results.map((item:any) => (
             <div style={{ display: "grid", gridTemplateColumns:200}}>
               {item.original_title}
               <img
+                key=''
                 src={`https://image.tmdb.org/t/p/w185/${item.poster_path}`}
                 alt={item.title}
               />
