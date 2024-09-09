@@ -1,7 +1,9 @@
-import {  GetStaticProps, InferGetStaticPropsType } from "next";
+
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 type Repo = {
   title: string
+  results: any[]
   stargazer_count:number
 }
 export const getStaticProps = (async () => {
