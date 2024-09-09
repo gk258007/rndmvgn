@@ -1,6 +1,6 @@
 
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type Repo = {
   title: string
   results: any[]
