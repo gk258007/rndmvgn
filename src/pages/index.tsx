@@ -9,11 +9,7 @@ export const getStaticProps = (async () => {
   const myHeaders = new Headers();
   
   myHeaders.append("Authorization", `Bearer  ${process.env.TMOVEDB_API}`);
-  const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow"
-  };
+
   const res = await fetch('https://api.themoviedb.org/3/account/9583227/watchlist/movies?language=en-US&page=1&sort_by=created_at.asc',
     {
       method: "GET",
