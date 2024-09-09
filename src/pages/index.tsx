@@ -14,9 +14,15 @@ export const getStaticProps = (async () => {
     headers: myHeaders,
     redirect: "follow"
   };
-  const res = await fetch('https://api.themoviedb.org/3/account/9583227/watchlist/movies?language=en-US&page=1&sort_by=created_at.asc',requestOptions)
+  const res = await fetch('https://api.themoviedb.org/3/account/9583227/watchlist/movies?language=en-US&page=1&sort_by=created_at.asc',
+    {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    }
+    )
   const repo: Repo = await res.json()
-  console.log("The response from the API",repo)
+  
   return{props: {repo}}
 }) satisfies GetStaticProps<{
   repo: Repo
@@ -25,7 +31,7 @@ export const getStaticProps = (async () => {
 export default function Home({
   repo,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(`Bearer + ${process.env.TMOVEDB_API}`)
+  
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">  
